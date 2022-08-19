@@ -234,8 +234,7 @@ const beers = [
         ],
         "brewers_tips": "Be careful not to collect too much wort from the mash. Once the sugars are all washed out there are some very unpleasant grainy tasting compounds that can be extracted into the wort.",
         "contributed_by": "Sam Mason <samjbmason>"
-    },
-    {
+    },{
         "id": 3,
         "name": "Berliner Weisse With Yuzu - B-Sides",
         "tagline": "Japanese Citrus Berliner Weisse.",
@@ -716,5 +715,6 @@ const beers = [
         "contributed_by": "Sam Mason <samjbmason>"
     }
 ];
+    
 
 export default beers;
