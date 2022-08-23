@@ -11,7 +11,7 @@ const beers = [
         "target_fg": 1010,
         "target_og": 1044,
         "ebc": 20,
-        "srm": 10,
+        "srm": 10,  
         "ph": 4.4,
         "attenuation_level": 75,
         "volume": {

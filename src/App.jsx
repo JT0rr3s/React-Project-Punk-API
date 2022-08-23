@@ -1,19 +1,36 @@
 import './App.scss';
-import data from "./data/data"
 import ExploreBeers from "./containers/ExploreBeers/ExploreBeers";
+import { useState, useEffect } from "react";
+
+const App = () => {
+
+  const [ beers, setBeers ] = useState("");
+
+  const getBeers = () => {
+
+    fetch("https://api.punkapi.com/v2/beers")
+    .then((res) => {
+      return res.json()
+    })
+    .then((data) => {
+      setBeers(data);
+    })
+  }
+
+  useEffect(getBeers, []);
 
 
-function App() {
   return (
     <div>
       <header>
         <h1>BREWDOG</h1>
       </header>
       <div>
-        <ExploreBeers beerData={data} />
+        {beers && <ExploreBeers beerData={beers}/>}
       </div>
     </div>
   );
 }
+
 
 export default App;
