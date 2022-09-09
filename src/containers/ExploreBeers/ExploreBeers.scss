@@ -36,4 +36,16 @@
     column-gap: 10px;
     row-gap: 15px;
   }
+
+  .api-button {
+    background-color: white;
+    border: 2px solid black;
+    height: 5vh;
+    width: 13vh;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: rgb(178, 175, 175);
+    }
+  }
   

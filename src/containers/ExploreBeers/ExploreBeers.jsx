@@ -6,6 +6,30 @@ import { useState } from "react";
 const ExploreBeers = (props) => {
 
     const { beerData } = props;
+
+    const [ newBeers, setNewBeers ] = useState("");
+
+    const getNewBeers = () => {
+
+    fetch("http://localhost:3010/api/beers")
+        .then((res) => {
+        return res.json()
+        })
+        .then((data) => {
+        setNewBeers(data);
+        })
+     }
+
+
+    // useEffect(getNewBeers, []);
+
+    const [isClicked, setIsClicked] = useState(false);
+
+    const handleOnClickFour = () => {
+        setIsClicked(!isClicked);
+        getNewBeers();
+    }
+
     const [searchTerm, setSearchTerm] = useState("");
 
     const handleInput = (event) => {
@@ -55,6 +79,14 @@ const ExploreBeers = (props) => {
         return beerNameLower.includes(search) && acidity && beer.image_url;
     })
 
+    // const additionalBeers = newBeers.beers && newBeers.beers.filter((beer) => {
+    //     const beerNameLower = beer.name.toLowerCase();
+    //     const search = searchTerm.toLowerCase();
+    //     return beerNameLower.includes(search) && beer.image_url;
+    // })
+
+ 
+
     // const highAndClassic = beerData.filter((beer) => {
     //     const beerNameLower = beer.name.toLowerCase();
     //     const search = searchTerm.toLowerCase();
@@ -93,9 +125,12 @@ const ExploreBeers = (props) => {
             <div className="checkbox-text">
                 High Acidity (pH less than 4)  <input type="checkbox" className="checkbox" onClick={handleOnClickThree}></input>
             </div>
+            <div>
+                <button onClick={handleOnClickFour} className="api-button">New Additions</button> 
+            </div>
             </div>
             <div className="cards">
-                {isChecked ? <BeerCards beerData={highAlcohol}/> : isCheckedTwo ? <BeerCards beerData={classicAlcohol}/> : isCheckedThree ? <BeerCards beerData={alcoholPH}/> : <BeerCards beerData={filteredBeers}/> }
+            {isClicked ? newBeers.beers && <BeerCards beerData={newBeers.beers}/> : isChecked ? <BeerCards beerData={highAlcohol}/> : isCheckedTwo ? <BeerCards beerData={classicAlcohol}/> : isCheckedThree ? <BeerCards beerData={alcoholPH}/> : <BeerCards beerData={filteredBeers}/> }
             </div>
         </section>
     )

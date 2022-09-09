@@ -1,6 +1,8 @@
 import './App.scss';
 import ExploreBeers from "./containers/ExploreBeers/ExploreBeers";
+// import BeerCards from './components/BeerCards/BeerCards';
 import { useState, useEffect } from "react";
+
 
 const App = () => {
 
@@ -19,7 +21,31 @@ const App = () => {
 
   useEffect(getBeers, []);
 
+ 
+  // const [ newBeers, setNewBeers ] = useState("");
 
+  // const getNewBeers = () => {
+
+  // fetch("http://localhost:3010/api/beers")
+  //     .then((res) => {
+  //     return res.json()
+  //     })
+  //     .then((data) => {
+  //     setNewBeers(data);
+  //     console.log(newBeers);
+  //     })
+  //   }
+
+  // useEffect(getNewBeers, [])
+
+
+// This was below the header tag within 'return'
+/* <div onClick={getNewBeers}>
+<button>Josh's Picks</button>
+{newBeers.beers && <BeerCards beerData={newBeers.beers}/>}
+</div> */
+
+ 
   return (
     <div>
       <header>
@@ -29,8 +55,7 @@ const App = () => {
         {beers && <ExploreBeers beerData={beers}/>}
       </div>
     </div>
-  );
+  )
 }
-
 
 export default App;
